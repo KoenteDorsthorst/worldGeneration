@@ -22,13 +22,29 @@ public class Generation : MonoBehaviour
         {
             for(int n = yStartPoint; n < height; n++)
             {
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                
 
 
-                int random = Random.Range(0, 2);
-                cube.transform.position = new Vector3(i, random, n);
-                cube.AddComponent<BoxCollider>();
-                cube.name = "Cube " + i + " " + n;
+                
+                int random = Random.Range(1, 10);
+                int height = 1;
+                if(random > 8)
+                {
+                    height = 3;
+                }
+                else if(random > 7){
+                    height = 2;
+                }
+
+
+                for (int h = 0; h < height; h++)
+                {
+                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    cube.transform.position = new Vector3(i, h, n);
+                    cube.AddComponent<BoxCollider>();
+                    cube.name = "Cube " + i + " " + n + " " + h;
+                }
+                
             }
         }
         
